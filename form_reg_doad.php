@@ -1,37 +1,43 @@
 <?php
 
-session_start(); 
+session_start(); //Iniciar a sessao
 
 // Limpar o buffer
 ob_start();
 
-include("con_bd.php");
+// Incluir a conexao com o banco de dados
+include_once "./con_bd.php";
 
 // Receber os dados do formulario
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+//var_dump($dados);
 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
- <title>Doações Salvam Vidas</title>
+
 <head>
-<meta charset="utf-8"
+    <meta charset="utf-8"
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="modelo.css" media="screen">
+    <title>Sistema de Doações</title>
+
 </head>
 
 <body>
-      <a href="index.php">Página Inicial</a><br> 
-      <h1> Doações Salvam Vidas </h1>
+    <a href="reg-doad.php">Listar</a><br>
+    
     <?php
-	
+
     if (!empty($dados['produtos'])) {
-        $valor_pesq = implode(", ", $dados['produtos']);
         
-        // busca produto selecionado no banco de dados
-        $query_produtos = "SELECT prod_id, produto, quantidade, id_usuidoa, status 
+        $valor_pesq = implode(", ", $dados['produtos']);
+        //var_dump($valor_pesq);
+
+        
+        $query_produtos = "SELECT prod_id, produto, quantidade, status, entrega 
                     FROM produtos 
                     WHERE prod_id IN ($valor_pesq)";
 
@@ -41,31 +47,35 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         // Executar a QUERY
         $result_produtos->execute();
 
-        echo "<h1>Produto Selecionado</h1>";
+        echo "<h1>Registrar a Entrega do Produto</h1>";
 
         // Inicio do formulario
-        echo "<form method='POST' action='proc_ed_prod.php'>";
+        echo "<form method='POST' action='proc_reg_doad3.php'>";
 
         // Ler os registros retornado do BD
         while ($row_produto = $result_produtos->fetch(PDO::FETCH_ASSOC)) {
+            //var_dump($row_usuario);
             extract($row_produto);
             echo "<input type='hidden' name='prod_id[]' value='$prod_id'>";
-            echo "Produto: $produto";
-			echo ' - ';
-            echo "Quantidade: $quantidade";
+            //echo "Nome: <input type='text' name='produto[]' value='$produto' placeholder='produto'><br><br>";
+			echo "Nome: <input type='text' name='produto[]' value='$produto' readonly><br><br>";
+            echo "Quantidade: <input type='text' name='quantidade[]' value='$quantidade' readonly><br><br>";
+			echo "<input type='hidden' name='status[]' value='$status' placeholder='status'><br><br>";
+			//echo "Status: <input type='text' name='status[]' value='$status' placeholder='status'><br><br>";
+		    echo "<input type='hidden' name='entrega[]' value='$entrega'>";			
             echo "<hr>";
         }
-	$prod_selec=$prod_id;
 
-        echo "<input type='submit' value=' Clique aqui para Confirmar' name='editProdutos'>";
+        echo "<input type='submit' value='Registrar a Entrega' name='editProdutos'>";
 
         // Fim do formulario
         echo "</form>";
     } else {
-        $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Produto não editado com sucesso!</p>";
+        // Variavel global com a mensagem de sucesso
+        $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não editado com sucesso!</p>";
 
         // Redirecionar o usuario para a pagina inicial
-        header("Location: index.php");
+        header("Location: reg-doad.php");
     }
     ?>
 </body>

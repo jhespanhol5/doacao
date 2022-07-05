@@ -8,16 +8,16 @@ include("con_bd.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
- <title>Doações Salvam Vidas</title>
+ <title>Página Administrativa - Doações Salvam Vidas</title>
 <head>
-<meta charset="utf-8"
+    <meta charset="utf-8"
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="modelo.css" media="screen">
 </head>
 
- <h1> Doações Salvam Vidas </h1>
+ <h1> Página Administrativa - Doações Salvam Vidas </h1>
  <body>
 <?php
 // Receber os dados formulario
@@ -77,11 +77,11 @@ $query_produto = "SELECT prod.produto, prod.quantidade, prod.id_usuidoa, prod.id
      $_SESSION['msg'] = "<p style='color: #f00;'>Erro: A escolha do produto não foi confirmada</p>";
 
      // Redirecionar para a pagina inicial
-     header("Location: index.php");
+     header("Location: admin.php");
 }
 ?>
 <br>
-<a href="index.php">Página Inicial</a>
+<a href="admin.php">Página Inicial</a>
 </body>
 
 </html>

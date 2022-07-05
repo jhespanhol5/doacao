@@ -1,16 +1,13 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html>
      <title>Doações Salvam Vidas</title>
 <head>
-     <!-- Última versão CSS compilada e minificada -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Tema opcional -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Última versão JavaScript compilada e minificada -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>Sistema de Doações</title>
+<meta charset="utf-8"
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="modelo.css" media="screen">
+   <title>Sistema de Doações</title>
 		
 </head>
 
@@ -27,7 +24,7 @@
                     <div class="notification is-info">
                     </div>
                     <div class="box">
-                        <form action="cadastrar.php" method="POST">
+                        <form action="cadastrar1.php" method="POST">
                             <div class="field">
                                 <div class="control">
                                     <input name="nome" type="text" class="input is-large" placeholder="Nome" autofocus>
@@ -82,7 +79,7 @@
 							
 							<div class="field">
                                 <div class="control">
-								<B>Escolha Beneficiário ou Doador?</B>
+								<B>Complemente o seu cadastro definindo se você é Beneficiário ou Doador?</B>
 								<select name="tp_usu">
 									<option value="b">beneficiário</option>
 									<option value="d">doador</option>

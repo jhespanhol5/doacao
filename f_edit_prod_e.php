@@ -13,9 +13,9 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
- <title>Doações Salvam Vidas</title>
+ <title>Página Administrativa - Doações Salvam Vidas</title>
 <head>
-<meta charset="utf-8"
+    <meta charset="utf-8"
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 <body>
       <a href="index.php">Página Inicial</a><br> 
-      <h1> Doações Salvam Vidas </h1>
+      <h1> Página Administrativa - Doações Salvam Vidas </h1>
     <?php
 	
     if (!empty($dados['produtos'])) {
@@ -44,7 +44,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         echo "<h1>Produto Selecionado</h1>";
 
         // Inicio do formulario
-        echo "<form method='POST' action='proc_ed_prod.php'>";
+        echo "<form method='POST' action='proc_ed_prod_e.php'>";
 
         // Ler os registros retornado do BD
         while ($row_produto = $result_produtos->fetch(PDO::FETCH_ASSOC)) {
@@ -65,7 +65,7 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Produto não editado com sucesso!</p>";
 
         // Redirecionar o usuario para a pagina inicial
-        header("Location: index.php");
+        header("Location: admin.php");
     }
     ?>
 </body>

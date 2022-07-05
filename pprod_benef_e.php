@@ -7,9 +7,9 @@ include("con_bd.php");
 
 <!DOCTYPE html>
 <html lang="pt-br">
- <title>Doações Salvam Vidas</title>
+ <title>Página Administrativa - Doações Salvam Vidas</title>
 <head>
-<meta charset="utf-8"
+    <meta charset="utf-8"
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,14 +18,14 @@ include("con_bd.php");
 
 <body>
   
-   <a href="index.php">Página Inicial</a><br> 
-    <h1> Doações Salvam Vidas </h1>
+   <a href="admin.php">Página Inicial</a><br> 
+    <h1> Página Administrativa - Doações Salvam Vidas </h1>
     <h1>Produtos Disponíveis</h1>
 
  <?php
 
     $pesquisar = $_POST['pesquisar'];
-	$query_produtos = "SELECT prod_id, produto, quantidade, id_usuidoa, status FROM produtos WHERE produto LIKE '%$pesquisar%' AND tp_doa='b' AND status='0' ORDER BY dt_idoa asc LIMIT 1";
+	$query_produtos = "SELECT prod_id, produto, quantidade, id_usuidoa, status FROM produtos WHERE produto LIKE '%$pesquisar%' AND tp_doa='e' AND status='0' ORDER BY dt_idoa asc LIMIT 1";
 		
 	$result_produtos = $conn->prepare($query_produtos);
 	$result_produtos->execute();
@@ -33,10 +33,10 @@ include("con_bd.php");
 	$linhas =$result_produtos->rowCount();
 	
 	if ($linhas==0){
-		header("Location: reg_nec.php");
+		echo 'não há produtos disponíveis';
 	}
         
-	echo "<form method='POST' action='f_edit_prod.php'>";
+	echo "<form method='POST' action='f_edit_prod_e.php'>";
 
    		while ($row_produto = $result_produtos->fetch(PDO::FETCH_ASSOC)) {
 			extract($row_produto);

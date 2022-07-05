@@ -2,15 +2,12 @@
 <html>
     
 <head>
-         <!-- Última versão CSS compilada e minificada -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Tema opcional -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Última versão JavaScript compilada e minificada -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>Sistema de Doações</title>
+<meta charset="utf-8"
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="modelo.css" media="screen">
+	<title>Sistema de Doações</title>
 </head>
 </html>
 <body>
@@ -36,7 +33,7 @@ $sql = "INSERT INTO produtos (produto, quantidade, categoria, tp_doa, id_usuidoa
 if($conexao->query($sql) === TRUE) {
 	echo "Dados registrados com sucesso - ";
 	if($tp_doa == "doacao") {
-		echo "Aguarde o nosso retorno para o agendamento e retirada do(s) medicamento(s)";
+		echo "Aguarde o contato para retirada da doação";
 		
 	} else {
 		echo "O beneficiário entrará em contato";
